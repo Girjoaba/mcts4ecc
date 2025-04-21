@@ -71,6 +71,16 @@ The Li/Dutta alternatives are commented out.
 int new_value = get_max_weight_row(config, state);
 ```
 
+``` C
+bool is_highscore(Config *config, SharedMemory *shared_memory, uint8_t *state) {
+    // // Highscore: Dutta
+    // return shared_memory->bcs_count > get_bad_4_cycles(config, state);
+    
+    // Highscore: Li
+    return shared_memory->max_row_weight > get_max_weight_row(config, state);
+}
+```
+
 ### Monte Carlo Tree Search `src/mcts.c`
 ``` C
 bool check_valid(Config *config, SharedMemory *shared_memory, uint8_t *state) {
@@ -94,6 +104,24 @@ bool check_valid(Config *config, SharedMemory *shared_memory, uint8_t *state) {
 ```
 
 ### Action Space `src/matrix_game.c`
+
+``` C
+uint8_t *get_start_state(Config *config) {
+    uint8_t *state = calloc(config->N, sizeof(uint8_t));
+    // // Build Identity Part: Dutta & Jun
+    // for (int i = 0; i < config->rows; i++) {
+    //     state[config->K + i] = 1 << i;
+    // }
+
+    // Build Identity Part: Li
+    for (int i = 0; i < config->rows; i++) {
+        state[2 * i + 1] = 1 << i;
+    }
+
+    return state;
+}
+```
+
 ``` C
 for (int i = 0; i < complete_vector_space_bound; i++) {
     action_col = i;
