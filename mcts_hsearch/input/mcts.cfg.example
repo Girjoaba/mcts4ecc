@@ -1,0 +1,28 @@
+[Matrix Definition]
+N=72                # Number of columns
+K=64                # Number of rows (N-K)
+maxWeight=5
+
+[MCTS Settings]
+exploreCoeff=2.0    
+
+[Search Settings]
+numSearches=200         # MCTS iterations per column placed
+heatingRate=1.075       # Heating Rate Optimization
+heatingColumnLimit=42   # At which column heating stops
+numGames=1              # Number of full reruns
+
+[Optimizations]
+enableActionSpaceSplitting=true
+splittingCol=28
+leftWeight=3            # Col. weight on the left split
+rightWeight=5           # Col. weight on the right split
+
+enableHighscore=false   # Highscore optimizations
+
+[Logging Settings]
+enableSharedMemory=true     
+enableVerbatim=false
+
+[Parallel Settings]
+numThreads=1            # Experiemental do not change
