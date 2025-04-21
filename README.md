@@ -56,7 +56,7 @@ More testing is also done by our Python Visualizer, outside the scope of the mai
 
 ## Changing the Search from Li codes to Dutta/Jun Codes
 
-The MCTS-based search is configured for the Dutta/Jun codes on the `dutta_configured` branch.
+The MCTS-based search is configured for the Dutta/Jun codes on the `dutta_jun_search` branch.
 
 To configure the MCTS-based search for a different code can be done by simply changing the strict conditions and the target metrics.
 
