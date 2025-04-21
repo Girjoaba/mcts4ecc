@@ -12,15 +12,15 @@
  */
 uint8_t *get_start_state(Config *config) {
     uint8_t *state = calloc(config->N, sizeof(uint8_t));
-    // // Build Identity Part: Dutta & Jun
-    // for (int i = 0; i < config->rows; i++) {
-    //     state[config->K + i] = 1 << i;
-    // }
-
-    // Build Identity Part: Li
+    // Build Identity Part: Dutta & Jun
     for (int i = 0; i < config->rows; i++) {
-        state[2 * i + 1] = 1 << i;
+        state[config->K + i] = 1 << i;
     }
+
+    // // Build Identity Part: Li
+    // for (int i = 0; i < config->rows; i++) {
+    //     state[2 * i + 1] = 1 << i;
+    // }
 
     return state;
 }
@@ -129,15 +129,15 @@ void init_action_space(Config *config, ActionSpace *action_space) {
         action_col = i;
         bit_count = kernighan_bit_count(action_col);
 
-        // // Action Space: Dutta & Jun
-        // if (bit_count >= 3 && bit_count % 2 == 1 && bit_count <= config->max_weight) {
-        //     action_space->avail_cols[action_space->action_count++] = i;
-        // }
-
-        // Action Space: Li
-        if (bit_count >= 2 && bit_count <= config->max_weight) {
+        // Action Space: Dutta & Jun
+        if (bit_count >= 3 && bit_count % 2 == 1 && bit_count <= config->max_weight) {
             action_space->avail_cols[action_space->action_count++] = i;
         }
+
+        // // Action Space: Li
+        // if (bit_count >= 2 && bit_count <= config->max_weight) {
+        //     action_space->avail_cols[action_space->action_count++] = i;
+        // }
     }
 
     action_space->avail_cols = realloc(action_space->avail_cols, action_space->action_count*sizeof(uint8_t));

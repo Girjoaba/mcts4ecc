@@ -31,11 +31,11 @@ void init_shared_memory(Config *config, SharedMemory *shared_memory) {
  */
 bool improves_metric(Config *config, SharedMemory *shared_memory, uint8_t *state, bool is_minimization) {
     int baseline = shared_memory->max_row_weight;
-    // // Baseline: Dutta
-    // int new_value = get_bad_4_cycles(config, state);
+    // Baseline: Dutta
+    int new_value = get_bad_4_cycles(config, state);
     
-    // Baseline: Li
-    int new_value = get_max_weight_row(config, state);
+    // // Baseline: Li
+    // int new_value = get_max_weight_row(config, state);
 
     if (is_minimization) {
         if (new_value < baseline) {
@@ -59,11 +59,11 @@ bool improves_metric(Config *config, SharedMemory *shared_memory, uint8_t *state
  * @brief Function used for the highscore optimization implementation.
  */
 bool is_highscore(Config *config, SharedMemory *shared_memory, uint8_t *state) {
-    // // Highscore: Dutta
-    // return shared_memory->bcs_count > get_bad_4_cycles(config, state);
+    // Highscore: Dutta
+    return shared_memory->bcs_count > get_bad_4_cycles(config, state);
     
-    // Highscore: Li
-    return shared_memory->max_row_weight > get_max_weight_row(config, state);
+    // // Highscore: Li
+    // return shared_memory->max_row_weight > get_max_weight_row(config, state);
 }
 
 void update_best_matrix(Config *config, SharedMemory *shared_memory, uint8_t *new_state) {

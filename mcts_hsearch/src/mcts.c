@@ -141,8 +141,8 @@ bool check_valid(Config *config, SharedMemory *shared_memory, uint8_t *state) {
     if (config->enable_highscore) {
             return (
             check_no_2_cycles(config, state)
-            // && check_no_3_cycles(config, state)              // Dutta & Jun: Condition
-            && check_no_adj_single_syndromes(config, state)     // Li: Condition
+            && check_no_3_cycles(config, state)              // Dutta & Jun: Condition
+            // && check_no_adj_single_syndromes(config, state)     // Li: Condition
             && check_no_forbidden_4_cycles(config, state)       
             && is_highscore(config, shared_memory, state)
     );
@@ -150,8 +150,8 @@ bool check_valid(Config *config, SharedMemory *shared_memory, uint8_t *state) {
 
     return (
             check_no_2_cycles(config, state)
-            // && check_no_3_cycles(config, state)           // Dutta & Jun: Condition
-            && check_no_adj_single_syndromes(config, state)  // Li: Condition 
+            && check_no_3_cycles(config, state)           // Dutta & Jun: Condition
+            // && check_no_adj_single_syndromes(config, state)  // Li: Condition 
             && check_no_forbidden_4_cycles(config, state) 
     );
 }
