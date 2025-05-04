@@ -1,15 +1,3 @@
-/**
- * @file test_framework.c
- * @author Andrei Girjoaba (a.v.girjoaba@rug.nl)
- * @brief The header file of a simple unit test C framework I used for working with
- * matrices. Contains helper functions and MACROS.
- * @version 0.1
- * @date 2024-05-19
- * 
- * @copyright Copyright (c) 2024
- * 
- */
-
 #ifndef TESTFRAMEWORK_H
 #define TESTFRAMEWORK_H
 
